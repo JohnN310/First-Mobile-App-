@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground"
+    tools:context=".ProfilePagePlaceholder" >
+
+    <TextView
+        android:id="@+id/your_profile_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="monospace"
+        android:textStyle="bold"
+        android:textColor="@color/mainBrown"
+        android:text="@string/your_profile"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/go_home" />
+
+    <Button
+        android:id="@+id/go_home"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:fontFamily="monospace"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:foreground="@drawable/home"
+        android:background="@drawable/home"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/your_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="monospace"
+        android:textColor="@color/mainBrown"
+        android:text="@string/name"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/your_profile_text" />
+
+    <TextView
+        android:id="@+id/name_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="monospace"
+        android:textColor="@color/mainBrown"
+        android:text="@string/name"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/your_name_text" />
+
+
+    <TextView
+        android:id="@+id/your_username_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="55dp"
+        android:textStyle="bold"
+        android:fontFamily="monospace"
+        android:textColor="@color/mainBrown"
+        android:text="@string/username"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/your_name_text" />
+
+    <TextView
+        android:id="@+id/username_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="monospace"
+        android:textColor="@color/mainBrown"
+        android:text="@string/username"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/your_username_text" />
+
+
+    <Button
+        android:id="@+id/editPassword"
+        android:layout_width="167dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:backgroundTint="@color/buttonBlue"
+        android:text="@string/change_password"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@id/delete_account"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logout" />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="150dp"
+        android:backgroundTint="@color/buttonBlue"
+        android:fontFamily="monospace"
+        android:text="@string/log_out"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_of_friends" />
+
+    <Button
+        android:id="@+id/delete_account"
+        android:layout_width="167dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="40dp"
+        android:text="@string/delete_account"
+        android:textSize="14sp"
+        android:fontFamily="monospace"
+        android:backgroundTint="@color/buttonBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editPassword"
+        app:layout_constraintTop_toBottomOf="@+id/logout" />
+
+    <TextView
+        android:id="@+id/friends_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/friends"
+        android:textSize="16sp"
+        android:fontFamily="monospace"
+        android:textColor="@color/mainBrown"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/your_username_text" />
+
+    <ListView
+        android:id="@+id/list_of_friends"
+        android:layout_width="302dp"
+        android:layout_height="257dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/friends_list" />
+
+    <Button
+        android:id="@+id/addFriendButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginStart="30dp"
+        android:fontFamily="monospace"
+        android:backgroundTint="@color/buttonBlue"
+        android:text="@string/add_friend"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/friends_list"
+        app:layout_constraintTop_toBottomOf="@id/your_username_text"
+        app:layout_constraintEnd_toStartOf="@id/see_invites_button"/>
+
+    <Button
+        android:id="@+id/see_invites_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="monospace"
+        android:backgroundTint="@color/buttonBlue"
+        android:text="@string/see_invites"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/addFriendButton"
+        app:layout_constraintTop_toBottomOf="@id/your_username_text" />
+<!--        app:layout_constraintStart_toEndOf="@+id/addFriendButton"-->
+<!--    app:layout_constraintTop_toBottomOf="@id/your_username_text"-->
+<!--    android:onClick="showInvitesPopup"-->
+<!--    />-->
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

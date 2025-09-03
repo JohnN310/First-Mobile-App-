@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:gravity="center"
+android:background="@color/mainBackground"
+tools:context=".LoginPage">
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:padding="28dp">
+
+        <TextView
+            android:id="@+id/create_an_account_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="monospace"
+            android:textColor="@color/mainBrown"
+            android:layout_marginTop="30dp"
+            android:text="@string/create_an_account"
+            android:textSize="28sp"
+            tools:layout_editor_absoluteY="140dp" />
+
+        <EditText
+            android:id="@+id/type_name"
+            android:layout_width="270sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="monospace"
+            android:textColor="@color/mainBrown"
+            android:inputType="text"
+            android:layout_marginTop="30dp"
+            android:hint="@string/name"
+            app:layout_constraintTop_toTopOf="@id/create_an_account_text"
+            android:textSize="22sp"/>
+
+        <EditText
+            android:id="@+id/create_username"
+            android:layout_width="270sp"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textColor="@color/mainBrown"
+            android:hint="@string/username"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toTopOf="@id/type_name"
+            android:textSize="22sp"/>
+
+        <EditText
+            android:id="@+id/create_password"
+            android:layout_width="270sp"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:layout_marginTop="30dp"
+            android:fontFamily="monospace"
+            android:textColor="@color/mainBrown"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toTopOf="@id/create_username"
+            android:textSize="22sp"/>
+
+        <TextView
+            android:id="@+id/password_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password_must_be_6_characters_or_more"
+            android:textSize="12sp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="monospace"
+            android:textColor="@color/mainBrown"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/create_password"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/confirm_password"
+            android:layout_width="270sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:hint="@string/confirm_password"
+            android:fontFamily="monospace"
+            android:textColor="@color/mainBrown"
+            android:inputType="textPassword"
+            android:textSize="22sp"
+            app:layout_constraintTop_toTopOf="@id/create_password" />
+
+        <Button
+            android:id="@+id/connect_spotify_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/connect_to_spotify"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/buttonBlue"
+            android:fontFamily="monospace"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toTopOf="@id/confirm_password" />
+
+        <Button
+            android:id="@+id/create_account"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/create_account"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/buttonBlue"
+            android:fontFamily="monospace"
+            app:layout_constraintTop_toTopOf="@id/connect_spotify_button"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/have_an_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:fontFamily="monospace"
+            android:textColor="@color/mainBrown"
+            android:text="@string/already_have_an_account"
+            app:layout_constraintTop_toTopOf="@id/create_account"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/go_to_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/login"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/buttonBlue"
+            android:fontFamily="monospace"
+            app:layout_constraintTop_toTopOf="@id/have_an_account"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
+</LinearLayout>
+

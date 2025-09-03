@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_all_time"
+        android:title="All Time" />
+    <item
+        android:id="@+id/menu_6_months"
+        android:title="Last 6 Months" />
+    <item
+        android:id="@+id/menu_4_weeks"
+        android:title="Last 4 Weeks" />
+</menu>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground"
+    tools:context=".HomePage" >
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="monospace"
+        android:text="@string/scrollify"
+        android:textColor="@color/mainBrown"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/pastMonth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profilePage" />
+
+    <Button
+        android:id="@+id/profilePage"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="28dp"
+        android:foreground="@drawable/profile"
+        android:background="@drawable/profile"
+        android:foregroundTint="@color/mainBrown"
+        android:backgroundTint="@color/mainBrown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:foreground="@drawable/settings"
+        android:background="@drawable/settings"
+        android:foregroundTint="@color/mainBrown"
+        android:backgroundTint="@color/mainBrown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/pastMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/past_month"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/buttonBlue"
+        android:fontFamily="monospace"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+
+    <Button
+        android:id="@+id/pastSixMonths"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginEnd="74dp"
+        android:text="@string/past_six_months"
+        android:fontFamily="monospace"
+        android:backgroundTint="@color/buttonBlue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pastMonth"
+        android:textSize="24sp" />
+
+
+    <Button
+        android:id="@+id/pastYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginEnd="74dp"
+        android:text="@string/past_year"
+        android:fontFamily="monospace"
+        android:backgroundTint="@color/buttonBlue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pastSixMonths"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/saved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginEnd="74dp"
+        android:text="@string/saved"
+        android:fontFamily="monospace"
+        android:backgroundTint="@color/buttonBlue"
+        app:layout_constraintTop_toBottomOf="@id/pastYear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="24sp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

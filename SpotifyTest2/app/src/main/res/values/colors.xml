@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="correct_color">#C6F1BC</color>
+    <color name="incorrect_color">#E86B6B</color>
+    <color name="mainBackground">#e0d4d4</color>
+    <color name="mainBrown">#50343c</color>
+    <color name="buttonBlue">#486c8c</color>
+    <color name="my_button_color">#ECFAE2</color> <!-- Replace #FF5722 with your desired color code -->
+
+</resources>
