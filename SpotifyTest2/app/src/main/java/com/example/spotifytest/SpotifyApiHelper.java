@@ -186,7 +186,7 @@ public class SpotifyApiHelper {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.d("HTTP", "Failed to fetch data: " + e);
-                Toast.makeText(listView.getContext(), "Failed to fetch data, watch Logcat for more details", Toast.LENGTH_SHORT).show();
+                Toast.makeText(listView.getContext(), "Failed to fetch data, see Logcat for more details", Toast.LENGTH_SHORT).show();
             }
 
             @Override

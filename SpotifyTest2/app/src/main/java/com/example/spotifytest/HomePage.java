@@ -180,7 +180,8 @@
 
 
 package com.example.spotifytest;
-
+import android.os.Handler;
+import android.os.Looper;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -324,6 +325,8 @@ public class HomePage extends AppCompatActivity {
 //        } else {
 //            Toast.makeText(getApplicationContext(), "You have no saved tracks", Toast.LENGTH_SHORT).show();
 //        }
+        Toast toast = Toast.makeText(getApplicationContext(), "Loading...", Toast.LENGTH_SHORT);
+        toast.show();
         // inflate the layout for the popup window
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_layout, null);
@@ -336,16 +339,6 @@ public class HomePage extends AppCompatActivity {
         yourNameTextView.setText("Top Track Names:");
         invitesTextView.setText(""); // Clear previous text
 
-        // append top track names to the invitesTextView
-        StringBuilder sb = new StringBuilder();
-        for (String trackName : topTrackNames) {
-            if (trackName.equals("topTracks") || trackName.equals("")) {
-                continue;
-            }
-            sb.append(trackName).append("\n\n"); // append track name with new lines
-        }
-        invitesTextView.setText(sb.toString().trim());
-        invitesTextView.setTextSize(20); // set the text size to 20sp (adjust as needed)
 
         // create a PopupWindow instance
         PopupWindow popupWindow = new PopupWindow(
@@ -372,7 +365,32 @@ public class HomePage extends AppCompatActivity {
         // show the popup window at the center of the anchor view
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, -200);
 
+
+        SpotifyApiClient apiClient = new SpotifyApiClient();
+        apiClient.getTopTracks(username);
+
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            List<String> tracks = SpotifyApiClient.returnTopTracks();
+
+
+
+            if (tracks.isEmpty()) {
+                invitesTextView.setText("No top tracks found");
+            } else {
+                StringBuilder sbs = new StringBuilder();
+                for (String trackName : tracks) {
+                    if (trackName.equals("topTracks") || trackName.equals("")) continue;
+                    sbs.append(trackName).append("\n\n");
+                }
+                invitesTextView.setText(sbs.toString().trim());
+            }
+            invitesTextView.setTextSize(20);
+
+
+        }, 1000);
+        new Handler(Looper.getMainLooper()).postDelayed(toast::cancel, 1000);
     }
+
 
 
 

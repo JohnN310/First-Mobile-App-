@@ -135,6 +135,9 @@ public class SpotifyApiHelperActivitySongs extends AppCompatActivity {
         accountsDatabaseHandler.addSavedWrapped(username1, topSongs);
         System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAa " + topSongs);
         Toast.makeText(this, "Wrapped saved!", Toast.LENGTH_SHORT).show();
+        // web service usage
+        SpotifyApiClient apiClient = new SpotifyApiClient();
+        apiClient.updateTopTracks(username1, topSongs);
     }
 
 

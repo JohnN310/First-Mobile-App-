@@ -125,6 +125,9 @@ public class CreateAccount extends AppCompatActivity {
                     bundle.putString("username", inputUsername.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
+
+                    SpotifyApiClient apiClient = new SpotifyApiClient();
+                    apiClient.createUser(inputUsername.getText().toString(), inputPassword.getText().toString(), inputName.getText().toString());
                 }
 
             }

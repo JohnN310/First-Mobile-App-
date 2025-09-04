@@ -55,6 +55,19 @@ public class ProfilePagePlaceholder extends AppCompatActivity
         friends = thisProfile.getFriends();
         invites = thisProfile.getInvites();
 
+        if (!invites.startsWith("invites,")) {
+            // Insert comma and space after "invites"
+            invites = invites.replaceFirst("invites", "invites,");
+
+            // Add commas between names (if they follow name1, name2 pattern)
+            invites = invites.replaceAll("name(\\d+)", "name$1, ").trim();
+
+            // Remove trailing comma if any
+            if (invites.endsWith(",")) {
+                invites = invites.substring(0, invites.length() - 1);
+            }
+        }
+
         System.out.println("1111111111111111111 invites: " + invites);
 
         inviteList = new ArrayList<>();
