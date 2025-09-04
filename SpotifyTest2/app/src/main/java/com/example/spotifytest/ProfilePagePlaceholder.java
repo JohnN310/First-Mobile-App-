@@ -267,7 +267,7 @@ public class ProfilePagePlaceholder extends AppCompatActivity
                     lastInviteHolder[0] = ""; // reset after action
                     inviteList.remove(lastInvite);
 
-                    String updatedInvites = invites.replace(lastInvite + ",", "");
+                    String updatedInvites = invites.replace(lastInvite + ",", ",");
                     thisProfile.setInvites(updatedInvites);
                     invites = updatedInvites;
                     accountsDatabaseHandler.updateInvites(username, updatedInvites);
@@ -282,7 +282,7 @@ public class ProfilePagePlaceholder extends AppCompatActivity
                     lastInviteHolder[0] = ""; // reset
                     inviteList.remove(lastInvite);
 
-                    String updatedInvites = invites.replace(lastInvite + ",", "");
+                    String updatedInvites = invites.replace(lastInvite + ",", ",");
                     thisProfile.setInvites(updatedInvites);
                     invites = updatedInvites;
                     accountsDatabaseHandler.updateInvites(username, updatedInvites);
@@ -307,7 +307,7 @@ public class ProfilePagePlaceholder extends AppCompatActivity
                 }
 
                 String lastInvite = lastInviteHolder[0];
-                String updatedInvites = invites.replace(lastInvite + ",", "");
+                String updatedInvites = invites.replace(lastInvite + ",", ",");
                 thisProfile.setInvites(updatedInvites);
                 invites = updatedInvites;
                 accountsDatabaseHandler.updateInvites(username, updatedInvites);
