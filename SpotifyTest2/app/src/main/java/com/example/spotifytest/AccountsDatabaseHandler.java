@@ -196,31 +196,6 @@ public class AccountsDatabaseHandler extends SQLiteOpenHelper {
 
     public YourProfile getAccount(String userName) {
 
-//        SQLiteDatabase db = this.getWritableDatabase();
-//
-//        Cursor cursor = db.rawQuery("Select * from accounts where username = ?", new String[]{userName});
-//        YourProfile thisProfile = new YourProfile();
-//
-//        cursor.moveToFirst();
-//        while (!cursor.isAfterLast()) {
-//
-//            if (userName.equals(cursor.getString(0))) {
-//                thisProfile.setUsername(cursor.getString(0));
-//                thisProfile.setPassword(cursor.getString(1));
-//                thisProfile.setName(cursor.getString(2));
-//                thisProfile.setCode(cursor.getString(3));
-//                thisProfile.setFriends(cursor.getString(4));
-//                thisProfile.setInvites(cursor.getString(5));
-//                break;
-//            }
-//            cursor.moveToNext();
-//
-//        }
-//
-//        cursor.close();
-//        db.close();
-//
-//        return thisProfile;
         YourProfile thisProfile = new YourProfile();
         if (userName != null) {
             SQLiteDatabase db = this.getWritableDatabase();
