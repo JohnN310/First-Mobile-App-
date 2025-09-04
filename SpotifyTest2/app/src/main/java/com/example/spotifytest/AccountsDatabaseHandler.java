@@ -33,7 +33,6 @@ public class AccountsDatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
-        // on below line we are creating
         // an sqlite query and we are
         // setting our column names
         // along with their data types.
@@ -55,16 +54,16 @@ public class AccountsDatabaseHandler extends SQLiteOpenHelper {
 
     public void newUser(String userUsername, String userPassword, String userName, String userCode) {
 
-        // on below line we are creating a variable for
+       // a variable for
         // our sqlite database and calling writable method
         // as we are writing data in our database.
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // on below line we are creating a
+        // creating a
         // variable for content values.
         ContentValues values = new ContentValues();
 
-        // on below line we are passing all values
+        // passing all values
         // along with its key and value pair.
         values.put(username, userUsername);
         values.put(password, userPassword);
@@ -263,7 +262,7 @@ public class AccountsDatabaseHandler extends SQLiteOpenHelper {
     public void deleteAccount(String userUsername) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // Step 1: Go through all accounts
+        // go through all accounts
         Cursor cursor = db.rawQuery("SELECT username, friends, invites FROM " + tableName, null);
 
         if (cursor.moveToFirst()) {
@@ -275,21 +274,21 @@ public class AccountsDatabaseHandler extends SQLiteOpenHelper {
                 ContentValues values = new ContentValues();
                 boolean needsUpdate = false;
 
-                // Step 2: Clean up friends
+                // clean up friends
                 if (friendsList != null && friendsList.contains(userUsername)) {
                     String updatedFriends = friendsList.replace(userUsername + ",", "");
                     values.put("friends", updatedFriends);
                     needsUpdate = true;
                 }
 
-                // Step 3: Clean up invites
+                // clean up invites
                 if (invitesList != null && invitesList.contains(userUsername)) {
                     String updatedInvites = invitesList.replace(userUsername + ",", "");
                     values.put("invites", updatedInvites);
                     needsUpdate = true;
                 }
 
-                // Step 4: Save back if changed
+                // save back if changed
                 if (needsUpdate) {
                     db.update(tableName, values, "username=?", new String[]{currentUser});
                 }
@@ -299,7 +298,7 @@ public class AccountsDatabaseHandler extends SQLiteOpenHelper {
 
         cursor.close();
 
-        // Step 5: Delete the account itself
+        // delete the account
         db.delete(tableName, "username=?", new String[]{userUsername});
 
         db.close();
@@ -310,13 +309,13 @@ public class AccountsDatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        // Convert the list of track names to a single string
+        // convert the list of track names to a single string
         String topTracksString = String.join(",", topTrackNames); // Using comma as delimiter
 
-        // Add the top tracks string to ContentValues
+        // add the top tracks string to ContentValues
         values.put("topTracks", topTracksString);
 
-        // Insert the ContentValues into the database
+        // insert the ContentValues into the database
         db.insert(tableName, null, values);
 
         db.close();
@@ -382,21 +381,20 @@ public class AccountsDatabaseHandler extends SQLiteOpenHelper {
 
 
     public ArrayList<YourProfile> readProfiles() {
-        // on below line we are creating a
         // database for reading our database.
         SQLiteDatabase database = this.getReadableDatabase();
 
-        // on below line we are creating a cursor with query to
+        // a cursor with query to
         // read data from database.
         Cursor profileCursor = database.rawQuery("SELECT * FROM " + tableName, null);
 
-        // on below line we are creating a new array list.
+        // a new array list.
         ArrayList<YourProfile> profilesArrayList = new ArrayList<>();
 
         // moving our cursor to first position.
         if (profileCursor.moveToFirst()) {
             do {
-                // on below line we are adding the data from
+                // add the data from
                 // cursor to our array list.
                 profilesArrayList.add(new YourProfile(profileCursor.getString(0), profileCursor.getString(1), profileCursor.getString(2), profileCursor.getString(3), profileCursor.getString(4), profileCursor.getString(5), profileCursor.getString(6)));
             } while (profileCursor.moveToNext());

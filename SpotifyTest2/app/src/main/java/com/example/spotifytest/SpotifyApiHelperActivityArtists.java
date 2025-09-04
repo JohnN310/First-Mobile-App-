@@ -1,64 +1,3 @@
-//package com.example.spotifytest;
-//
-//import android.os.Bundle;
-//import android.widget.ArrayAdapter;
-//import android.widget.ListView;
-//import androidx.appcompat.app.AppCompatActivity;
-//
-//import org.json.JSONArray;
-//import org.json.JSONException;
-//import org.json.JSONObject;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class SpotifyApiHelperActivityArtists extends AppCompatActivity implements SpotifyApiHelperArtists.SpotifyDataListener {
-//
-//    private ListView listView;
-//    private SpotifyApiHelperArtists spotifyApiHelper;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.spotify_api_helper_artists);
-//
-//        // Initialize ListView
-//        listView = findViewById(R.id.listView);
-//
-//        // Initialize SpotifyApiHelper
-//        spotifyApiHelper = new SpotifyApiHelperArtists();
-//
-//        // Call method to fetch data from Spotify API
-//        spotifyApiHelper.fetchDataFromSpotify("v1/me/top/artists?time_range=long_term&limit=5", "GET", null, listView);
-//    }
-//
-//    // Implement the method to handle data received from Spotify API
-//    @Override
-//    public void onDataReceived(JSONObject data) {
-//        try {
-//            JSONArray items = data.getJSONArray("items");
-//            List<String> artistNames = new ArrayList<>();
-//            for (int i = 0; i < items.length(); i++) {
-//                JSONObject artist = items.getJSONObject(i);
-//                String name = artist.getString("name");
-//                artistNames.add(name);
-//            }
-//            // Update ListView with artist names
-//            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, artistNames);
-//            listView.setAdapter(adapter);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    // Implement the method to handle errors
-//    @Override
-//    public void onError(String errorMessage) {
-//        // Handling of errors
-//    }
-//}
-
-
 package com.example.spotifytest;
 
 import android.annotation.SuppressLint;
@@ -130,15 +69,15 @@ public class SpotifyApiHelperActivityArtists extends AppCompatActivity {
         setContentView(R.layout.spotify_api_helper_artists);
 
 
-        // Initialize ListView
+        // initialize ListView
         listView = findViewById(R.id.listView);
 
         accessToken = HomePage.publicToken;
 
-        // Initialize SpotifyApiHelper
+        // initialize SpotifyApiHelper
         spotifyApiHelper = new SpotifyApiHelperArtists();
 
-        // Call method to fetch data from Spotify API
+        // call method to fetch data from Spotify API
 //        spotifyApiHelper.fetchDataFromSpotify("v1/me/top/artists?time_range=long_term&limit=5", "GET", null, listView);
         spotifyApiHelper.fetchUserTopArtists(accessToken, "long_term", 5, listView);
         ListView listView2 = findViewById(R.id.listView2);
@@ -197,10 +136,10 @@ public class SpotifyApiHelperActivityArtists extends AppCompatActivity {
                 return false;
             }
         });
-        // Inflate the menu resource
+        // inflate the menu resource
         popupMenu.getMenuInflater().inflate(R.menu.options_menu, popupMenu.getMenu());
 
-        // Show the popup menu
+        // show the popup menu
         popupMenu.show();
     }
 
@@ -212,15 +151,15 @@ public class SpotifyApiHelperActivityArtists extends AppCompatActivity {
                 int id = item.getItemId();
                 ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
                 if (id == R.id.top5) {
-                    // Change background to Spring
+                    // cChange background to Spring
                     spotifyApiHelper.fetchUserTopArtists(accessToken, "long_term", 5, listView);
                     return true;
                 } else if (id == R.id.top10) {
-                    // Change background to Summer
+                    // change background to Summer
                     spotifyApiHelper.fetchUserTopArtists(accessToken, "long_term", 10, listView);
                     return true;
                 } else if (id == R.id.top15) {
-                    // Change background to Fall
+                    // change background to Fall
                     spotifyApiHelper.fetchUserTopArtists(accessToken, "long_term", 15, listView);
                     return true;
                 } else {
@@ -241,11 +180,11 @@ public class SpotifyApiHelperActivityArtists extends AppCompatActivity {
         int month = calendar.get(Calendar.MONTH);
         int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
 
-        // Get the current month and day as strings
+        // get the current month and day as strings
         String monthString = new SimpleDateFormat("MMMM", Locale.getDefault()).format(calendar.getTime());
         String dayOfMonthString = String.valueOf(dayOfMonth);
 
-        // Check for special days
+        // check for special days
         if (monthString.equals("January") && dayOfMonthString.equals("1")) { // New Year's Day
             backgroundDrawable = getResources().getDrawable(R.drawable.summer_background);
         } else if (monthString.equals("February") && dayOfMonthString.equals("14")) { // Valentine's Day
@@ -268,7 +207,7 @@ public class SpotifyApiHelperActivityArtists extends AppCompatActivity {
         else if (monthString.equals("April") && dayOfMonthString.equals("8")) {
             backgroundDrawable = getResources().getDrawable(R.drawable.newyears2);
         }
-            // Set background
+            // set background
         if (backgroundDrawable != null) {
             constraintLayout.setBackground(backgroundDrawable);
         }
@@ -326,7 +265,7 @@ public class SpotifyApiHelperActivityArtists extends AppCompatActivity {
                 String resultText = result.getText();
                 SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(resultText);
 
-// Process bold text
+// process bold text
                 int startIndex = 0;
                 int endIndex;
                 while ((startIndex = resultText.indexOf("**", startIndex)) != -1) {
@@ -339,7 +278,7 @@ public class SpotifyApiHelperActivityArtists extends AppCompatActivity {
                     }
                 }
 
-// Process italic text
+// process italic text
                 startIndex = 0;
                 while ((startIndex = resultText.indexOf("*", startIndex)) != -1) {
                     endIndex = resultText.indexOf("*", startIndex + 1);

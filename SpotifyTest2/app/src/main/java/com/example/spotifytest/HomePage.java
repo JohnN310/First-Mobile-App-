@@ -294,7 +294,7 @@ public class HomePage extends AppCompatActivity {
 
         my_accountBtn = (Button) findViewById(R.id.my_account_btn);
 
-        // Set the click listeners for the buttons
+        // set the click listeners for the buttons
 
         tokenBtn.setOnClickListener((v) -> {
             getToken();
@@ -303,7 +303,7 @@ public class HomePage extends AppCompatActivity {
         viewSaved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Show top tracks popup menu
+                // show top tracks popup menu
                 showTopTracksPopup(v);
             }
         });
@@ -324,40 +324,40 @@ public class HomePage extends AppCompatActivity {
 //        } else {
 //            Toast.makeText(getApplicationContext(), "You have no saved tracks", Toast.LENGTH_SHORT).show();
 //        }
-        // Inflate the layout for the popup window
+        // inflate the layout for the popup window
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_layout, null);
-        // Initialize views from the popup layout
+        // initialize views from the popup layout
         TextView yourNameTextView = popupView.findViewById(R.id.your_name_text);
         TextView invitesTextView = popupView.findViewById(R.id.invites_text_view);
         Button closeButton = popupView.findViewById(R.id.close_button);
 
-        // Set text for the TextViews
+        // set text for the TextViews
         yourNameTextView.setText("Top Track Names:");
         invitesTextView.setText(""); // Clear previous text
 
-        // Append top track names to the invitesTextView
+        // append top track names to the invitesTextView
         StringBuilder sb = new StringBuilder();
         for (String trackName : topTrackNames) {
             if (trackName.equals("topTracks") || trackName.equals("")) {
                 continue;
             }
-            sb.append(trackName).append("\n\n"); // Append track name with new lines
+            sb.append(trackName).append("\n\n"); // append track name with new lines
         }
         invitesTextView.setText(sb.toString().trim());
-        invitesTextView.setTextSize(20); // Set the text size to 20sp (adjust as needed)
+        invitesTextView.setTextSize(20); // set the text size to 20sp (adjust as needed)
 
-        // Create a PopupWindow instance
+        // create a PopupWindow instance
         PopupWindow popupWindow = new PopupWindow(
                 popupView,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT
         );
 
-        // Set a background drawable for the popup window
+        // set a background drawable for the popup window
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        // Set focusable true to enable touch events outside of the popup window
+        // set focusable true to enable touch events outside of the popup window
         popupWindow.setFocusable(true);
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -366,21 +366,18 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        // Set focusable to true to enable touch events outside the popup window to dismiss it
+        // set focusable to true to enable touch events outside the popup window to dismiss it
         popupWindow.setFocusable(true);
 
-        // Show the popup window at the center of the anchor view
+        // show the popup window at the center of the anchor view
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, -200);
 
     }
 
 
-    /**
-     * Get token from Spotify
-     * This method will open the Spotify login activity and get the token
-     * What is token?
-     * https://developer.spotify.com/documentation/general/guides/authorization-guide/
-     */
+
+     // Get token from Spotify
+
     public void getToken() {
         final AuthorizationRequest request = getAuthenticationRequest(AuthorizationResponse.Type.TOKEN);
         AuthorizationClient.openLoginActivity(HomePage
@@ -388,28 +385,24 @@ public class HomePage extends AppCompatActivity {
 
     }
 
-    /**
-     * Get code from Spotify
-     * This method will open the Spotify login activity and get the code
-     * What is code?
-     * https://developer.spotify.com/documentation/general/guides/authorization-guide/
-     */
+
+     // Get code from Spotify
     public void getCode() {
         final AuthorizationRequest request = getAuthenticationRequest(AuthorizationResponse.Type.CODE);
         AuthorizationClient.openLoginActivity(HomePage.this, AUTH_CODE_REQUEST_CODE, request);
     }
 
 
-    /**
-     * When the app leaves this activity to momentarily get a token/code, this function
-     * fetches the result of that external activity to get the response from Spotify
+    /*
+      When the app leaves this activity to momentarily get a token/code, this function
+     fetches the result of that external activity to get the response from Spotify
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         final AuthorizationResponse response = AuthorizationClient.getResponse(resultCode, data);
 
-        // Check which request code is present (if any)
+        // check which request code is present (if any)
         if (AUTH_TOKEN_REQUEST_CODE == requestCode) {
             mAccessToken = response.getAccessToken();
 //            setTextAsync(mAccessToken, tokenTextView);
@@ -422,22 +415,16 @@ public class HomePage extends AppCompatActivity {
         }
     }
 
-    /**
-     * Creates a UI thread to update a TextView in the background
-     * Reduces UI latency and makes the system perform more consistently
-     *
-     * @param text the text to set
-     * @param textView TextView object to update
+    /*
+     * creates a UI thread to update a TextView in the background
+     * reduces UI latency and makes the system perform more consistently
      */
     private void setTextAsync(final String text, TextView textView) {
         runOnUiThread(() -> textView.setText(text));
     }
 
-    /**
-     * Get authentication request
-     *
-     * @param type the type of the request
-     * @return the authentication request
+    /*
+     * get authentication request
      */
     private AuthorizationRequest getAuthenticationRequest(AuthorizationResponse.Type type) {
         return new AuthorizationRequest.Builder(CLIENT_ID, type, getRedirectUri().toString())
@@ -447,10 +434,8 @@ public class HomePage extends AppCompatActivity {
                 .build();
     }
 
-    /**
-     * Gets the redirect Uri for Spotify
-     *
-     * @return redirect Uri object
+    /*
+     * gets the redirect Uri for Spotify
      */
     private Uri getRedirectUri() {
         return Uri.parse(REDIRECT_URI);

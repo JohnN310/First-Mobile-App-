@@ -45,15 +45,15 @@ public class SpotifyApiHelperActivityRecommendations extends AppCompatActivity i
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spotify_api_helper_recommendations);
 
-        // Initialize ListView
+        // initialize ListView
         listView = findViewById(R.id.listView);
 
         accessToken = HomePage.publicToken;
 
-        // Initialize SpotifyApiHelper
+        // initialize SpotifyApiHelper
         spotifyApiHelper = new SpotifyApiHelperRecommendations();
 
-        // Set the data listener
+        // set the data listener
         spotifyApiHelper.mListener = this;
         try {
             spotifyApiHelper.fetchDataFromSpotify(SpotifyApiHelper.topTrackIds, accessToken);
@@ -65,28 +65,28 @@ public class SpotifyApiHelperActivityRecommendations extends AppCompatActivity i
     }
 
     private void captureScreen() {
-        // Get the root view of the activity
+        // get the root view of the activity
         View rootView = getWindow().getDecorView().getRootView();
 
-        // Enable drawing cache
+        // enable drawing cache
         rootView.setDrawingCacheEnabled(true);
 
-        // Create a bitmap of the rootView
+        // create a bitmap of the rootView
         Bitmap bitmap = Bitmap.createBitmap(rootView.getWidth(), rootView.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         rootView.draw(canvas);
 
-        // Disable drawing cache
+        // disable drawing cache
         rootView.setDrawingCacheEnabled(false);
 
-        // Use MediaStore to save the screenshot
+        // use MediaStore to save the screenshot
         ContentResolver contentResolver = getContentResolver();
         ContentValues contentValues = new ContentValues();
         contentValues.put(MediaStore.Images.Media.DISPLAY_NAME, "screenshot_" + System.currentTimeMillis() + ".png");
         contentValues.put(MediaStore.Images.Media.MIME_TYPE, "image/png");
         contentValues.put(MediaStore.Images.Media.DATE_ADDED, System.currentTimeMillis() / 1000);
 
-        // Save the bitmap to the MediaStore
+        // save the bitmap to the MediaStore
         try {
             android.net.Uri uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
             if (uri != null) {
@@ -114,7 +114,7 @@ public class SpotifyApiHelperActivityRecommendations extends AppCompatActivity i
 
     @Override
     public void onDataReceived(List<String> trackIds) {
-        // Construct endpoint using trackIds
+        // construct endpoint using trackIds
         CustomArrayAdapter adapter = new CustomArrayAdapter(listView.getContext(), trackIds);
         listView.setAdapter(adapter);
     }
@@ -122,7 +122,7 @@ public class SpotifyApiHelperActivityRecommendations extends AppCompatActivity i
 
     @Override
     public void onError(String errorMessage) {
-        // Handle error
+        // handle error
     }
     private void changeBackgroundBasedOnSpecialDays() {
         ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
@@ -132,11 +132,9 @@ public class SpotifyApiHelperActivityRecommendations extends AppCompatActivity i
         int month = calendar.get(Calendar.MONTH);
         int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
 
-        // Get the current month and day as strings
         String monthString = new SimpleDateFormat("MMMM", Locale.getDefault()).format(calendar.getTime());
         String dayOfMonthString = String.valueOf(dayOfMonth);
 
-        // Check for special days
         if (monthString.equals("January") && dayOfMonthString.equals("1")) { // New Year's Day
             backgroundDrawable = getResources().getDrawable(R.drawable.summer_background);
         } else if (monthString.equals("February") && dayOfMonthString.equals("14")) { // Valentine's Day
@@ -160,7 +158,7 @@ public class SpotifyApiHelperActivityRecommendations extends AppCompatActivity i
             backgroundDrawable = getResources().getDrawable(R.drawable.newyears2);
 
         }
-            // Set background
+            // set background
         if (backgroundDrawable != null) {
             constraintLayout.setBackground(backgroundDrawable);
         }

@@ -51,7 +51,6 @@ public class SeeInvites extends AppCompatActivity {
                 }
 
 
-                //HELP PLZ
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.friends, R.id.friendUsername, invitesList);
                 System.out.println("made arrayadapter");
                 invitesListView.setAdapter(arrayAdapter);

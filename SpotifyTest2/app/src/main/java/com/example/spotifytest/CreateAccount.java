@@ -132,31 +132,24 @@ public class CreateAccount extends AppCompatActivity {
 
     }
 
-    /**
-     * creating
-     *
-     * @param name user's name
-     * @param username user's username
-     * @param password user's password
-     */
+
+     // creating an account
+
     public void setAccount(String username, String password, String name) {
         accountsDatabaseHandler.newUser(username, password, name, mAccessCode);
     }
 
-    /**
-     * Get code from Spotify
-     * This method will open the Spotify login activity and get the code
-     * What is code?
-     * https://developer.spotify.com/documentation/general/guides/authorization-guide/
-     */
+
+     // this method will open the Spotify login activity and get the code
+
     public void getCode() {
         final AuthorizationRequest request = getAuthenticationRequest(AuthorizationResponse.Type.CODE);
         AuthorizationClient.openLoginActivity(CreateAccount.this, AUTH_CODE_REQUEST_CODE, request);
     }
 
-    /**
-     * When the app leaves this activity to momentarily get a token/code, this function
-     * fetches the result of that external activity to get the response from Spotify
+
+     /* when the app leaves this activity to momentarily get a token/code, this function
+        fetches the result of that external activity to get the response from Spotify
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -206,12 +199,9 @@ public class CreateAccount extends AppCompatActivity {
 //    }
 
 
-    /**
-     * Get authentication request
-     *
-     * @param type the type of the request
-     * @return the authentication request
-     */
+
+     // get authentication request
+
     private AuthorizationRequest getAuthenticationRequest(AuthorizationResponse.Type type) {
         return new AuthorizationRequest.Builder(CLIENT_ID, type, getRedirectUri().toString())
                 .setShowDialog(false)
@@ -220,11 +210,8 @@ public class CreateAccount extends AppCompatActivity {
                 .build();
     }
 
-    /**
-     * Gets the redirect Uri for Spotify
-     *
-     * @return redirect Uri object
-     */
+
+     // gets the redirect Uri for Spotify
     private Uri getRedirectUri() {
         return Uri.parse(REDIRECT_URI);
     }

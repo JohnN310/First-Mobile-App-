@@ -164,13 +164,13 @@ public class ProfilePagePlaceholder extends AppCompatActivity
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                 );
-                // Set an elevation value for the popup window
+                // set an elevation value for the popup window
                 popupWindow.setElevation(5.0f);
 
-                // Set a background drawable for the popup window
+                // set a background drawable for the popup window
                 popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-                // Set focusable true to enable touch events outside of the popup window
+                // set focusable true to enable touch events outside of the popup window
                 popupWindow.setFocusable(true);
 
                 popupWindow.showAtLocation(v, Gravity.CENTER, 0, -150);
@@ -211,25 +211,25 @@ public class ProfilePagePlaceholder extends AppCompatActivity
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
 
-        // Set an elevation value for the popup window
+        // set an elevation value for the popup window
         popupWindow.setElevation(5.0f);
 
-        // Set a background drawable for the popup window
+        // set a background drawable for the popup window
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        // Set focusable true to enable touch events outside of the popup window
+        // set focusable true to enable touch events outside of the popup window
         popupWindow.setFocusable(true);
 
-        // Retrieve the TextView in the popup layout to display invites
+        // retrieve the TextView in the popup layout to display invites
         TextView invitesTextView = popupView.findViewById(R.id.invites_text_view);
 
-        // Build the string of invites to display
+        // build the string of invites to display
         StringBuilder invitesText = new StringBuilder();
         for (String invite : inviteList) {
             invitesText.append(invite).append("\n");
         }
 
-        // Set the invites text to the TextView in the popup layout
+        // set the invites text to the TextView in the popup layout
         final String[] lastInviteHolder = new String[1];
         if (!inviteList.isEmpty()) {
             lastInviteHolder[0] = inviteList.get(inviteList.size() - 1);

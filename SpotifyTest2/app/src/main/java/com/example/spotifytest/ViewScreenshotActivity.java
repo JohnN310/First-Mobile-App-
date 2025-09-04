@@ -26,14 +26,14 @@ public class ViewScreenshotActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_screenshot);
 
-        // Query the MediaStore for screenshots
+        // query the MediaStore for screenshots
         Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
         String[] projection = {MediaStore.Images.ImageColumns._ID, MediaStore.Images.ImageColumns.DATA};
         String selection = MediaStore.Images.ImageColumns.DATA + " like ? ";
         String[] selectionArgs = new String[]{"%Screenshots%"};
         Cursor cursor = getContentResolver().query(uri, projection, selection, selectionArgs, null);
 
-        // Add URIs of screenshots to the list
+        // add URIs of screenshots to the list
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 int columnIndex = cursor.getColumnIndex(MediaStore.Images.ImageColumns._ID);
@@ -44,7 +44,7 @@ public class ViewScreenshotActivity extends AppCompatActivity {
             cursor.close();
         }
 
-        // Set up RecyclerView
+        // set up RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new ScreenshotAdapter());

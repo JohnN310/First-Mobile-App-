@@ -27,16 +27,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class Question2Activity extends AppCompatActivity {
 
-    // Correct song rankings
+    // correct song rankings
     private static List<String> topArtists = SpotifyApiHelperArtists.topArtists;
 
-    // Button for submission
+    // button for submission
     private Button submitButton;
 
-    // RecyclerView for songs
+    // recyclerView for songs
     private RecyclerView recyclerView;
 
-    // Button for submission
+    // button for submission
     private RecyclerAdapter adapter;
 
     @SuppressLint("MissingInflatedId")
@@ -45,20 +45,20 @@ public class Question2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz_question_2);
 
-        // Initialize views
+        // initialize views
         recyclerView = findViewById(R.id.recyclerView);
         submitButton = findViewById(R.id.submitButton);
 
-        // Prepare data
+        // prepare data
         List<String> itemList = new ArrayList<>(topArtists);
         Collections.shuffle(itemList);
 
-        // Set up RecyclerView
+        // set up RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RecyclerAdapter(itemList);
         recyclerView.setAdapter(adapter);
 
-        // Set up drag and drop functionality
+        // set up drag and drop functionality
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.UP | ItemTouchHelper.DOWN,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -77,12 +77,12 @@ public class Question2Activity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                // Not needed for this case
+                // not needed for this case
             }
         });
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
-        // Set click listener for the submit button
+        // set click listener for the submit button
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +91,7 @@ public class Question2Activity extends AppCompatActivity {
         });
     }
 
-    // Method to check the answers
+    // method to check the answers
     private void checkAnswers() {
         int count = 0;
         for (int i = 0; i < topArtists.size(); i++) {
@@ -100,15 +100,13 @@ public class Question2Activity extends AppCompatActivity {
             }
         }
         if (count == topArtists.size()) {
-            // All answers are correct
             showPopup("Correct!", true);
         } else {
-            // Some answers are incorrect
             showPopup("Incorrect! You got " + count + " correct.", false);
         }
     }
 
-    // Method to show a pop-up window
+    // method to show a pop-up window
     private void showPopup(String message, boolean isCorrect) {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -118,9 +116,9 @@ public class Question2Activity extends AppCompatActivity {
         popupMessage.setText(message);
 
         if (isCorrect) {
-            popupMessage.setTextSize(22); // Set text size to 25dp for "Correct!"
+            popupMessage.setTextSize(22);
         } else {
-            popupMessage.setTextSize(18); // Set text size to 20dp for other messages
+            popupMessage.setTextSize(18);
         }
 
         if (isCorrect) {
