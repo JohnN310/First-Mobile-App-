@@ -1,0 +1,1 @@
+This project is an interactive app that uses Spotify API to pull users' top music tracks and artists based on a given time frame and rank them. There is also functionality for playing mini games that are correlated to the Spotify Statistics. 
