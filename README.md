@@ -41,12 +41,39 @@ This project is an interactive app that uses Spotify API to pull users' top musi
 - `app/src/main/res/layout/`: XML layouts for screens.
 - `app/src/main/res/drawable/`: Backgrounds and button images.
 
+## Backend Service: FastAPI + SQLite
+
+To support account management and user data persistence, this project includes a **FastAPI backend** with **SQLite**.
+
+### Features
+- **User Management**: Create, retrieve, delete users.  
+- **Password Updates**: Update user passwords.  
+- **Top Tracks Storage**: Save and retrieve users’ top tracks.  
+
+### API Endpoints
+- **POST** `/users/` → Create a new user.  
+- **GET** `/users/{username}` → Retrieve a user’s details.  
+- **PUT** `/users/{username}/password` → Update a user’s password.  
+- **PUT** `/users/{username}/toptracks` → Save/update a user’s top tracks.  
+- **GET** `/users/{username}/toptracks` → Retrieve a user’s top tracks.  
+- **DELETE** `/users/{username}` → Delete a user.  
+
+### Tech Stack
+- **FastAPI** for building REST API endpoints.  
+- **SQLite** for local database storage.  
+- **Pydantic** for data validation.  
+
+### File
+- `fastapi_spotify_backend.py` → Contains all API logic, database setup, and helper functions.  
+
 ## Getting Started
 
 1. Clone the repo.
 2. Open in Android Studio.
 3. Add your Spotify API credentials.
 4. Build and run on an Android device.
+5. Start the backend service: uvicorn fastapi_spotify_backend:app --reload
+6. Use the backend to manage user accounts and top tracks.
 
 ---
 
