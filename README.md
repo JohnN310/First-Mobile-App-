@@ -32,7 +32,6 @@ This project is an interactive app that uses Spotify API to pull users' top musi
 - **Spotify Web API**
 - **OkHttp** for network requests
 - **RecyclerView** for interactive lists
-- **Google Gemini API** for genre analysis (AI)
 - **Custom UI** with seasonal backgrounds
 
 ## Project Structure
